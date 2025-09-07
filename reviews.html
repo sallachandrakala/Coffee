@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(107, 62, 38, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: #fff;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd166;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffd166;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Reviews Section */
+        #coffeeMenu {
+            padding: 80px 50px 50px;
+            background: url('https://www.pixelstalk.net/wp-content/uploads/2016/05/Free-Download-Coffee-Wallpapers-High-Quality.jpg') no-repeat center center;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        #coffeeMenu h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        
+        .menu-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .card-header {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px;
+            transition: background 0.3s;
+        }
+        
+        .menu-card p {
+            font-size: 14px;
+            color: #555;
+            padding: 12px;
+            line-height: 1.5em;
+        }
+        
+        .rating {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #ff9f1c;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .menu-card.active {
+            border: 2px solid #ff9f1c;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav-links li {
+                margin: 5px 15px;
+            }
+            
+            #coffeeMenu {
+                padding: 100px 20px 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-coffee"></i>
+            </div>
+            <div class="logo-text">Coffee</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i>Login</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i>Home</a></li>
+            <li><a href="#"><i class="fas fa-coffee"></i>About</a></li>
+            <li><a href="#"><i class="fas fa-star"></i>Menu</a></li>
+            <li><a href="#"><i class="fas fa-phone"></i>Reviews</a></li>
+            <li><a href="#"><i class="fas fa-user"></i>Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Reviews Section -->
+    <section id="coffeeMenu">
+        <h2>Reviews</h2>
+        
+        <div class="menu-grid">
+            <!-- All the review cards from the original code -->
+            <div class="menu-card" data-color="#ffe5e5">
+                <div class="card-header" style="background:#6b3e26;">Espresso</div>
+                <p>Rich and bold shot of pure coffee. Perfect energy boost.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🔥</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5f7ff">
+                <div class="card-header" style="background:#a0522d;">Americano</div>
+                <p>Smooth espresso with hot water. Light and balanced.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕😋</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff5e5">
+                <div class="card-header" style="background:#8b4513;">Cappuccino</div>
+                <p>Foamy milk over espresso. Classic Italian favorite.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕😍</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5ffe9">
+                <div class="card-header" style="background:#b5651d;">Latte</div>
+                <p>Espresso with steamed milk. Creamy and mild.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕😋</p>
+            </div>
+
+            <div class="menu-card" data-color="#f0e5ff">
+                <div class="card-header" style="background:#5d3a00;">Flat White</div>
+                <p>Velvety milk with espresso base. Smooth and silky.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕👌</p>
+            </div>
+
+            <div class="menu-card" data-color="#ffe5fa">
+                <div class="card-header" style="background:#4b2e2e;">Macchiato</div>
+                <p>Espresso topped with milk foam. Strong yet soft.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🔥</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5fff9">
+                <div class="card-header" style="background:#7b3f00;">Mocha</div>
+                <p>Espresso with chocolate and milk. Sweet and rich.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🍫</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff0e5">
+                <div class="card-header" style="background:#a0522d;">Affogato</div>
+                <p>Espresso poured over ice cream. Dessert in a cup.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🍦</p>
+            </div>
+
+            <div class="menu-card" data-color="#f9e5ff">
+                <div class="card-header" style="background:#6f4e37;">Cortado</div>
+                <p>Equal parts espresso and milk. Balanced strength.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕👌</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5f9ff">
+                <div class="card-header" style="background:#5c4033;">Cold Brew</div>
+                <p>Slow-steeped coffee. Smooth and refreshing.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ❄☕</p>
+            </div>
+
+            <div class="menu-card" data-color="#fffbe5">
+                <div class="card-header" style="background:#7b3f00;">Iced Latte</div>
+                <p>Chilled espresso with milk. Refreshing summer drink.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕❄</p>
+            </div>
+
+            <div class="menu-card" data-color="#ffe5e5">
+                <div class="card-header" style="background:#3d2b1f;">Iced Americano</div>
+                <p>Cold espresso with water. Light and crisp taste.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕❄</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5fff0">
+                <div class="card-header" style="background:#5c3317;">French Press</div>
+                <p>Full-bodied flavor. Rich aroma with bold strength.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕👌</p>
+            </div>
+
+            <div class="menu-card" data-color="#f5e5ff">
+                <div class="card-header" style="background:#2f1b0c;">Pour Over</div>
+                <p>Hand-brewed coffee. Clean and delicate notes.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕😋</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff0f0">
+                <div class="card-header" style="background:#4e342e;">Ristretto</div>
+                <p>Short, strong espresso. Intense and bold shot.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🔥</p>
+            </div>
+
+            <div class="menu-card" data-color="#f0fff0">
+                <div class="card-header" style="background:#3b2f2f;">Lungo</div>
+                <p>Long espresso shot. Smooth and less intense.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🙂</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5f5ff">
+                <div class="card-header" style="background:#5d4037;">Irish Coffee</div>
+                <p>Coffee with whiskey and cream. Warm and cozy.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🥃</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff5e5">
+                <div class="card-header" style="background:#6b4226;">Vienna Coffee</div>
+                <p>Espresso topped with whipped cream. Sweet delight.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🍰</p>
+            </div>
+
+            <div class="menu-card" data-color="#f0f0ff">
+                <div class="card-header" style="background:#4e2e2e;">Turkish Coffee</div>
+                <p>Strong unfiltered brew. Traditional bold taste.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🔥</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff0e5">
+                <div class="card-header" style="background:#5d3a00;">Hazelnut Mocha</div>
+                <p>Mocha with nutty twist. Smooth and sweet.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🌰</p>
+            </div>
+
+            <div class="menu-card" data-color="#f0ffe5">
+                <div class="card-header" style="background:#7b3f00;">Caramel Latte</div>
+                <p>Latte with caramel syrup. Sweet and creamy.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🍮</p>
+            </div>
+
+            <div class="menu-card" data-color="#f5e5ff">
+                <div class="card-header" style="background:#3b2f2f;">Pumpkin Spice Latte</div>
+                <p>Espresso with pumpkin spice. Seasonal favorite.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🎃</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff0f0">
+                <div class="card-header" style="background:#6f4e37;">Espresso Con Panna</div>
+                <p>Espresso topped with cream. Rich and creamy.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🍦</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5fff9">
+                <div class="card-header" style="background:#5c4033;">Dirty Chai</div>
+                <p>Chai tea with espresso. Spicy and bold fusion.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🌶</p>
+            </div>
+
+            <div class="menu-card" data-color="#fffbe5">
+                <div class="card-header" style="background:#4b2e2e;">Bulletproof Coffee</div>
+                <p>Coffee with butter & oil. Creamy energy booster.</p>
+                <p class="rating">⭐⭐⭐⭐ ⭐☕💪</p>
+            </div>
+
+            <div class="menu-card" data-color="#ffe5fa">
+                <div class="card-header" style="background:#3d2b1f;">Iced Mocha</div>
+                <p>Chilled mocha with cream. Sweet and cool.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ❄☕🍫</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5f7ff">
+                <div class="card-header" style="background:#6b4226;">Café au Lait</div>
+                <p>Brewed coffee with milk. Light and smooth taste.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🙂</p>
+            </div>
+
+            <div class="menu-card" data-color="#fff5e5">
+                <div class="card-header" style="background:#5d4037;">Espresso Romano</div>
+                <p>Espresso with lemon twist. Zesty bold flavor.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🍋</p>
+            </div>
+
+            <div class="menu-card" data-color="#e5ffe9">
+                <div class="card-header" style="background:#7b3f00;">Doppio</div>
+                <p>Double espresso shot. Pure strong coffee.</p>
+                <p class="rating">⭐⭐⭐⭐⭐ ☕🔥</p>
+            </div>
+
+            <div class="menu-card" data-color="#f9e5ff">
+                <div class="card-header" style="background:#3b2f2f;">Café Bombón</div>
+                <p>Espresso with condensed milk. Rich dessert style.</p>
+                <p class="rating">⭐⭐⭐⭐ ☕🍯</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle active state for coffee cards
+        document.querySelectorAll(".menu-card").forEach(card => {
+            card.addEventListener("click", () => {
+                let color = card.getAttribute("data-color");
+                card.classList.toggle("active");
+                if(card.classList.contains("active")){
+                    card.style.background = color;
+                } else {
+                    card.style.background = "rgba(255, 255, 255, 0.85)";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

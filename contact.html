@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(107, 62, 38, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: #fff;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: #ffd166;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffd166;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 600px;
+            padding: 80px 20px 50px;
+            gap: 40px;
+            flex-wrap: wrap;
+            background-image: url('https://img.freepik.com/premium-photo/top-view-cup-coffee-table_23-2148336777.jpg?w=1480');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            flex: 1 1 400px;
+        }
+        
+        .contact-form h2 {
+            margin-bottom: 20px;
+            color: #6b3e26;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .contact-form p {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #555;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-btn {
+            background: #6b3e26;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        
+        .form-btn:hover {
+            background: #8a5134;
+        }
+        
+        .shop-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            flex: 1 1 400px;
+            overflow: hidden;
+        }
+        
+        .shop-info h2 {
+            margin-bottom: 20px;
+            color: #6b3e26;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            font-size: 18px;
+            color: #6b3e26;
+            margin-right: 10px;
+            min-width: 24px;
+        }
+        
+        .info-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .map-container {
+            margin-top: 20px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Social Profiles Section */
+        .social-profiles {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .social-profiles h2 {
+            color: #6b3e26;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .profile-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            width: 300px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #6b3e26;
+        }
+        
+        .profile-card h3 {
+            margin-bottom: 15px;
+            color: #6b3e26;
+        }
+        
+        .profile-card p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .profile-btn {
+            display: inline-block;
+            background: #6b3e26;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .profile-btn:hover {
+            background: #8a5134;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #6b3e26;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #ffd166;
+        }
+        
+        .footer p {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nav-links li {
+                margin: 5px 15px;
+            }
+            
+            .contact-section {
+                padding: 100px 20px 30px;
+            }
+            
+            .contact-form, .shop-info {
+                flex: 1 1 100%;
+            }
+            
+            .profile-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+            }
+            
+            .contact-form, .shop-info {
+                padding: 20px;
+            }
+            
+            .profile-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-coffee"></i>
+            </div>
+            <div class="logo-text">Coffee Corner</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-coffee"></i> Menu</a></li>
+            <li><a href="#"><i class="fas fa-star"></i> Reviews</a></li>
+            <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+            <li><a href="#"><i class="fas fa-user"></i> Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2>📞 Contact Us 📞</h2>
+            <p>We are looking forward to hearing from you :)</p>
+            <form>
+                <input type="text" placeholder="Name" class="form-input" required>
+                <input type="email" placeholder="Email" class="form-input" required>
+                <input type="tel" placeholder="Phone" class="form-input">
+                <textarea placeholder="Message" class="form-input" required></textarea>
+                <button type="submit" class="form-btn">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Coffee Shop Info + Google Maps -->
+        <div class="shop-info">
+            <h2>Coffee Corner</h2>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info-text">
+                    <strong>Address:</strong> 123 Coffee Street,Tirupati,AP
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="info-text">
+                    <strong>Phone:</strong>+91 9912162503
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-text">
+                    <strong>Email:</strong>chandrakalasalla12@gmail.com
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <div class="info-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="info-text">
+                    <strong>Opening Hours:</strong><br>
+                    Monday-Friday: 7:00 AM - 9:00 PM<br>
+                    Saturday-Sunday: 8:00 AM - 10:00 PM
+                </div>
+            </div>
+
+            <!-- Embedded Google Maps -->
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.621465758447!2d-73.98576442380076!3d40.728857971390614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259eb7d421f0b%3A0xee91212b5d0cf6d5!2sCoffee%20Project%20NY!5e0!3m2!1sen!2sus!4v1694000000000!5m2!1sen!2sus"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Profiles Section -->
+    <section class="social-profiles">
+        <h2>Connect With Us</h2>
+        <div class="profile-cards">
+            <div class="profile-card">
+                <div class="profile-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3>Instagram</h3>
+                <p>Follow us on Instagram for daily coffee inspiration, behind-the-scenes content, and special promotions.</p>
+                <a href="https://www.instagram.com/chandrakala_75?igsh=MTFocHM2YnE1ZGxrbg==&utm_source=ig_contact_invite" class="profile-btn" target="_blank">Follow Us</a>
+            </div>
+            
+            <div class="profile-card">
+                <div class="profile-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <h3>GitHub</h3>
+                <p>Check out our GitHub profile to see our open-source projects and contributions to the developer community.</p>
+                <a href="https://github.com/sallachandrakala" class="profile-btn" target="_blank">View Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/chandrakala_75?igsh=MTFocHM2YnE1ZGxrbg==&utm_source=ig_contact_invite" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/sallachandrakala" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p>Designed by coffee website by salla chandrakala</p>
+        <p>123 Coffee Street, Brew City, BC 12345 | chandrakalasalla12@gmail.com</p>
+    </footer>
+</body>
+</html>
